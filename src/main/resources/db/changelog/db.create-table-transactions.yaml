@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: adilson
+      changes:
+        - sql:
+            dbms: postgresql
+            splitStatements: false
+            endDelimiter: ;
+            sql: CREATE TYPE transaction_type AS ENUM ('ENTRY','EXPENSE')
+  - changeSet:
+      id: 2
+      author: adilson
+      changes:
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_transaction_id
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: transaction_type
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 3
+      author: adilson
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: transactions
+            constraintName: fk_transactions_user_id
+            referencedColumnNames: id
+            referencedTableName: users
+            onDelete:  CASCADE
+            onUpdate:  RESTRICT

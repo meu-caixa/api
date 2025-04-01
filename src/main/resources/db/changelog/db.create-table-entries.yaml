@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: adilson
+      changes:
+        - createTable:
+            tableName: entries
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_entries_id
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: transaction_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: entry_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category
+                  type: income_type
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 2
+      author: adilson
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: transaction_id
+            baseTableName: entries
+            constraintName: fk_entry_transaction_id
+            referencedColumnNames: id
+            referencedTableName: transactions
+            onDelete:  CASCADE
+            onUpdate:  RESTRICT

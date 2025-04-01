@@ -1,0 +1,75 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: adilson
+      changes:
+        - sql:
+            dbms: postgresql
+            splitStatements: false
+            endDelimiter: ;
+            sql: |
+              CREATE TYPE expense_type AS ENUM ('MORADIA','ALIMENTACAO', 'CARTAO_CREDITO','FINANCIMANETO','TRANSPORTE');
+              CREATE TYPE expense_status AS ENUM ('A_VENCER','PAGO', 'ATRASADA');
+
+  - changeSet:
+      id: 2
+      author: adilson
+      changes:
+        - createTable:
+            tableName: expenses
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_expenses_id
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: transaction_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expense_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: due_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category
+                  type: income_type
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: expense_status
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 3
+      author: adilson
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: transaction_id
+            baseTableName: expenses
+            constraintName: fk_expense_transaction_id
+            referencedColumnNames: id
+            referencedTableName: transactions
+            onDelete:  CASCADE
+            onUpdate:  RESTRICT
