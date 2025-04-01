@@ -1,3 +1,11 @@
 databaseChangeLog:
   - include:
       file: db/changelog/db.create-table-users.yaml
+  - include:
+      file: db/changelog/db.create-table-monthly-income.yaml
+  - include:
+      file: db/changelog/db.create-table-transactions.yaml
+  - include:
+      file: db/changelog/db.create-table-entries.yaml
+  - include:
+      file: db/changelog/db.create-table-expenses.yaml
