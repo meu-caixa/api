@@ -7,26 +7,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "monthly_income")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
+public class MonthlyIncome {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String bankName;
 
-    private String login;
+    private Double amount;
 
-    private String password;
+    private String category;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -34,7 +33,6 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<MonthlyIncome> monthlyIncomes;
+    @ManyToOne
+    private User user;
 }
