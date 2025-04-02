@@ -7,26 +7,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "transactions")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String login;
+    private String description;
 
-    private String password;
+    private Double amount;
+
+    //Atribuir String ao transaction_type para ser implementado o ENUM
+    private String type;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -34,12 +36,5 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<MonthlyIncome> monthlyIncomes;
-
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<Transaction> transactions;
-
+    @ManyToOne User user;
 }
