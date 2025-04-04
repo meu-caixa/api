@@ -1,9 +1,9 @@
 package br.com.meucaixa.api.repositories;
 
 import br.com.meucaixa.api.models.Role;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface RoleRepository {
-    List<Role> findAll();
+    Page<Role> findAllPageable(Pageable pageable);
 }

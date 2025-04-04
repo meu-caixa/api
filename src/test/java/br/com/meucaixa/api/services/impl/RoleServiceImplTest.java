@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ class RoleServiceImplTest {
     @InjectMocks
     private RoleServiceImpl roleService;
 
+    private final PageRequest pageable = PageRequest.of(0, 10);
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -28,27 +32,27 @@ class RoleServiceImplTest {
     @Test
     void testGetRoles_shouldReturnRoleListEmpty() {
         // Arrange
-        when(roleRepository.findAll()).thenReturn(List.of());
+        when(roleRepository.findAllPageable(pageable)).thenReturn(new PageImpl<>(List.of(), pageable, 0));
 
         // Act
-        List<Role> roles = roleService.listRoles();
+        var page = roleService.listRolesPageable(pageable);
 
         // Assert
-        assertTrue(roles.isEmpty());
+        assertTrue(page.isEmpty());
     }
 
     @Test
     void testGetRoles_shouldReturnRoleListDefault() {
         // Arrange
         Role role = new Role(1, "ADMIN", "Administrator role", null, null);
-        when(roleRepository.findAll()).thenReturn(List.of(role));
+        when(roleRepository.findAllPageable(pageable)).thenReturn(new PageImpl<>(List.of(role), pageable, 1));
 
         // Act
-        List<Role> roles = roleService.listRoles();
+        var page = roleService.listRolesPageable(pageable);
 
         // Assert
-        assertFalse(roles.isEmpty());
-        assertEquals(1, roles.size());
-        assertEquals(role, roles.get(0));
+        assertFalse(page.isEmpty());
+        assertEquals(1, page.getContent().size());
+        assertEquals(role, page.getContent().get(0));
     }
 }
