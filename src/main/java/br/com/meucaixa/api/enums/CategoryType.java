@@ -1,6 +1,6 @@
 package br.com.meucaixa.api.enums;
 
-public enum Category {
+public enum CategoryType {
     SALARIO,
     RENDA_EXTRA
 }
