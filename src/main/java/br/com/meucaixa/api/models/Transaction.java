@@ -1,5 +1,6 @@
 package br.com.meucaixa.api.models;
 
+import br.com.meucaixa.api.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,8 +28,8 @@ public class Transaction {
 
     private Double amount;
 
-    //Atribuir String ao transaction_type para ser implementado o ENUM
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TransactionType type;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -36,5 +37,6 @@ public class Transaction {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @ManyToOne User user;
+    @ManyToOne
+    private User user;
 }

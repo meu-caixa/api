@@ -1,5 +1,6 @@
 package br.com.meucaixa.api.models;
 
+import br.com.meucaixa.api.enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,8 @@ public class MonthlyIncome {
 
     private Double amount;
 
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
