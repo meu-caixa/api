@@ -65,7 +65,7 @@ databaseChangeLog:
                   valueNumeric: 1
               - column:
                   name: name
-                  value: admin
+                  value: ADMIN
               - column:
                   name: description
                   value: Administrator role
