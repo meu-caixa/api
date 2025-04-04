@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "transactions")
@@ -39,4 +40,12 @@ public class Transaction {
 
     @ManyToOne
     private User user;
+
+    @OneToMany
+    @JoinColumn(name = "transaction_id")
+    private List<Expense> expenses;
+
+    @OneToMany
+    @JoinColumn(name = "transaction_id")
+    private List<Entry> entries;
 }

@@ -1,7 +1,6 @@
 package br.com.meucaixa.api.models;
 
-import br.com.meucaixa.api.enums.Category;
-import br.com.meucaixa.api.enums.TransactionType;
+import br.com.meucaixa.api.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +27,7 @@ public class Entry {
     private Date entryDate;
 
     @Enumerated(EnumType.STRING)
-    private Category category;
+    private CategoryType category;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
