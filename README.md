@@ -1,5 +1,6 @@
 # requirement
 - java 17
+- docker
 
 # run postgres
 Before running the application, you need to have a PostgreSQL database running.
@@ -10,8 +11,9 @@ docker run --rm -e POSTGRES_DB=meucaixa -e POSTGRES_HOST_AUTH_METHOD=trust -d -p
 ```
 
 # To Do List
+- [ ] add pipeline steps build, list, test ...
 - [ ] add swagger
 - [ ] add spring security
 - [ ] add role scope
-- [ ] add user scope 
+- [ ] add user scope
 ....
