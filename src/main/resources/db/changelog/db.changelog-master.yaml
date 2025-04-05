@@ -9,3 +9,5 @@ databaseChangeLog:
       file: db/changelog/db.create-table-entries.yaml
   - include:
       file: db/changelog/db.create-table-expenses.yaml
+  - include:
+      file: db/changelog/db.create-table-roles.yaml
