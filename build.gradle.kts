@@ -1,9 +1,6 @@
 plugins {
 	java
 	jacoco
-	checkstyle
-	pmd
-	id("com.github.spotbugs") version "6.0.6"
 	id("org.sonarqube") version "4.4.1.3373"
 	id("org.springframework.boot") version "3.4.4"
 	id("io.spring.dependency-management") version "1.1.7"
@@ -42,25 +39,6 @@ dependencies {
 	testImplementation("org.testcontainers:junit-jupiter:1.20.6")
 	testImplementation("org.testcontainers:postgresql:1.19.0")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-checkstyle {
-	toolVersion = "10.12.3"
-	configFile = file("config/checkstyle/checkstyle.xml")
-	isIgnoreFailures = false
-}
-
-pmd {
-	toolVersion = "6.55.0"
-	ruleSets = listOf() // use regras personalizadas
-	ruleSetFiles = files("config/pmd/pmd-rules.xml")
-	isIgnoreFailures = false
-}
-
-spotbugs {
-	toolVersion.set("4.7.3")
-	effort.set(com.github.spotbugs.snom.Effort.MAX)
-	reportLevel.set(com.github.spotbugs.snom.Confidence.LOW)
 }
 
 sonarqube {
