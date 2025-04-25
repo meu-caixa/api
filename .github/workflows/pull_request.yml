@@ -1,6 +1,9 @@
 name: PR - Check Pipeline
 run-name: Running - ${{ github.event_name }}
-on: [pull_request]
+on:
+  pull_request:
+    types:
+      - opened
 jobs:
   pr-checks:
     runs-on: ubuntu-latest
