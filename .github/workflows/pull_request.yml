@@ -28,4 +28,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build + Tests + Lint + Coverage
-        run: ./gradlew clean build check jacocoTestReport
+        run: ./gradlew clean build check jacocoTestReport printCoverage
