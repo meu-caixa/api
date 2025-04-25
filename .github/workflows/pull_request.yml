@@ -4,6 +4,7 @@ on:
   pull_request:
     types:
       - opened
+      - synchronize
 jobs:
   pr-checks:
     runs-on: ubuntu-latest
