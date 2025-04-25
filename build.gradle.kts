@@ -5,7 +5,9 @@ plugins {
 	java
 	jacoco
 	checkstyle
-//	id("org.sonarqube") version "4.4.1.3373"
+	pmd
+//	id("com.github.spotbugs") version "6.1.9"
+	id("org.sonarqube") version "6.0.1.5171"
 	id("org.springframework.boot") version "3.4.4"
 	id("io.spring.dependency-management") version "1.1.7"
 }
@@ -52,9 +54,24 @@ dependencies {
 //	}
 //}
 
+sonar {
+	properties {
+		property("sonar.projectKey" , "br.com.meucaixa")
+		property("sonar.organization" , "meu-teste")
+		property("sonar.host.url" , "https://sonarcloud.io")
+		property("sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+	}
+}
+
 checkstyle {
 	toolVersion = "10.12.4"
 	configFile = rootProject.file("${rootDir}/config/checkstyle/checkstyle.xml")
+}
+
+pmd {
+	isConsoleOutput = true
+	toolVersion = "7.0.0"
+	rulesMinimumPriority = 2
 }
 
 tasks.withType<Test> {
