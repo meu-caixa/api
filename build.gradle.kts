@@ -56,10 +56,11 @@ dependencies {
 
 sonar {
 	properties {
-		property("sonar.projectKey" , "br.com.meucaixa")
-		property("sonar.organization" , "meu-teste")
-		property("sonar.host.url" , "https://sonarcloud.io")
+		property("sonar.projectKey", "br.com.meucaixa")
+		property("sonar.organization", "meu-caixa")
+		property("sonar.host.url", "https://sonarcloud.io")
 		property("sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+		property("sonar.login", "263ace88596aee55fcbdf3a197fd32b2b862b875")
 	}
 }
 
