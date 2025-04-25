@@ -3,7 +3,7 @@ run-name: Running - ${{ github.event_name }}
 on: [pull_request]
 jobs:
   pr-checks:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout of code
         uses: actions/checkout@v4
