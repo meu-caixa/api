@@ -60,7 +60,7 @@ sonar {
 		property("sonar.organization", "meu-caixa")
 		property("sonar.host.url", "https://sonarcloud.io")
 		property("sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
-		property("sonar.login", "263ace88596aee55fcbdf3a197fd32b2b862b875")
+		property("sonar.token", "263ace88596aee55fcbdf3a197fd32b2b862b875")
 	}
 }
 
