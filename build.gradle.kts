@@ -47,13 +47,6 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-//sonarqube {
-//	properties {
-//		property("sonar.projectKey", "api")
-//		property("sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
-//	}
-//}
-
 sonar {
 	properties {
 		property("sonar.projectKey", "br.com.meucaixa")
@@ -72,7 +65,7 @@ checkstyle {
 pmd {
 	isConsoleOutput = true
 	toolVersion = "7.0.0"
-	rulesMinimumPriority = 2
+	rulesMinimumPriority = 3
 }
 
 tasks.withType<Test> {
