@@ -2,8 +2,11 @@ name: PR - Check Pipeline
 run-name: Running - ${{ github.event_name }}
 on:
   pull_request:
+    branches:
+      - develop
     types:
       - opened
+      - closed
       - synchronize
 jobs:
   pr-checks:

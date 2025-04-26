@@ -65,7 +65,7 @@ checkstyle {
 pmd {
 	isConsoleOutput = true
 	toolVersion = "7.0.0"
-	rulesMinimumPriority = 3
+	rulesMinimumPriority = 5
 }
 
 tasks.withType<Test> {
