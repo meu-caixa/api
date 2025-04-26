@@ -20,8 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/roles")
 public class RoleController {
 
-    @Autowired
     private RoleService roleService;
+
+    public RoleController(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @GetMapping
     public HttpEntity<PagedModel<RoleResponse>> listRolesPageable(Pageable pageable, PagedResourcesAssembler assembler) {
