@@ -3,7 +3,6 @@ package br.com.meucaixa.api.repositories.impl;
 import br.com.meucaixa.api.exceptions.ValidationException;
 import br.com.meucaixa.api.models.Role;
 import br.com.meucaixa.api.repositories.RoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +19,11 @@ import java.util.Objects;
 @Repository
 public class RoleRepositoryImpl implements RoleRepository {
 
-    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public RoleRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public Page<Role> findAllPageable(Pageable pageable) {

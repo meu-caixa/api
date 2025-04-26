@@ -3,7 +3,6 @@ package br.com.meucaixa.api.controllers.roles;
 import br.com.meucaixa.api.exceptions.ValidationException;
 import br.com.meucaixa.api.models.Role;
 import br.com.meucaixa.api.services.RoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
