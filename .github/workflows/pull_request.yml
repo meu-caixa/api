@@ -32,4 +32,6 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build + Tests + Lint + Coverage
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew clean build check jacocoTestReport printCoverage sonar
