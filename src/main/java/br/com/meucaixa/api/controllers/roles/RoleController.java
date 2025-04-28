@@ -27,7 +27,7 @@ public class RoleController {
     }
 
     @GetMapping
-    @WithSpan("Controller.listRolesPageable")
+    @WithSpan()
     public HttpEntity<PagedModel<RoleResponse>> listRolesPageable(Pageable pageable, PagedResourcesAssembler assembler) {
         Page<Role> roles = roleService.listRolesPageable(pageable);
         PagedModel<RoleResponse> model = assembler.toModel(

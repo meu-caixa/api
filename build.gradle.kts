@@ -1,6 +1,8 @@
 import org.w3c.dom.Element
 import javax.xml.parsers.DocumentBuilderFactory
 
+val otelVersion = project.property("otel.version") as String
+
 plugins {
 	java
 	jacoco
@@ -47,9 +49,9 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	// otel deps
-	implementation("io.opentelemetry:opentelemetry-api:1.30.0")
-	implementation("io.opentelemetry:opentelemetry-sdk:1.30.0")
-	implementation("io.opentelemetry:opentelemetry-exporter-otlp:1.30.0")
+	implementation("io.opentelemetry:opentelemetry-api:${otelVersion}")
+	implementation("io.opentelemetry:opentelemetry-sdk:${otelVersion}")
+	implementation("io.opentelemetry:opentelemetry-exporter-otlp:${otelVersion}")
 }
 
 sonar {

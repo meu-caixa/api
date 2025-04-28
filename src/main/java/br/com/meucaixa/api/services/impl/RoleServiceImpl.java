@@ -4,7 +4,6 @@ import br.com.meucaixa.api.annotations.WithSpan;
 import br.com.meucaixa.api.models.Role;
 import br.com.meucaixa.api.repositories.RoleRepository;
 import br.com.meucaixa.api.services.RoleService;
-import io.opentelemetry.api.trace.Tracer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository roleRepository, Tracer tracer) {
+    public RoleServiceImpl(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 
