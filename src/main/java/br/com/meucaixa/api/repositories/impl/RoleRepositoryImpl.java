@@ -1,5 +1,6 @@
 package br.com.meucaixa.api.repositories.impl;
 
+import br.com.meucaixa.api.annotations.WithSpan;
 import br.com.meucaixa.api.exceptions.ValidationException;
 import br.com.meucaixa.api.models.Role;
 import br.com.meucaixa.api.repositories.RoleRepository;
@@ -19,13 +20,14 @@ import java.util.Objects;
 @Repository
 public class RoleRepositoryImpl implements RoleRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public RoleRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
+    @WithSpan("Repository.findAllPageable")
     public Page<Role> findAllPageable(Pageable pageable) {
         try {
             int offset = pageable.getPageNumber() * pageable.getPageSize();
@@ -49,6 +51,7 @@ public class RoleRepositoryImpl implements RoleRepository {
         }
     }
 
+    @WithSpan("Repository.getTotalCount")
     private int getTotalCount() {
         String countQuery = "SELECT COUNT(*) FROM roles";
         return Objects.requireNonNullElse(jdbcTemplate.queryForObject(countQuery, Integer.class), 0);

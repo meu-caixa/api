@@ -11,7 +11,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers
-public class BaseIntegrationTest {
+public abstract class BaseIntegrationTest {
 
     @Autowired
     public JdbcTemplate jdbcTemplate;
