@@ -45,6 +45,11 @@ dependencies {
 	testImplementation("org.testcontainers:junit-jupiter:1.20.6")
 	testImplementation("org.testcontainers:postgresql:1.19.0")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	// otel deps
+	implementation("io.opentelemetry:opentelemetry-api:1.30.0")
+	implementation("io.opentelemetry:opentelemetry-sdk:1.30.0")
+	implementation("io.opentelemetry:opentelemetry-exporter-otlp:1.30.0")
 }
 
 sonar {

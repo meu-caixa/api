@@ -1,5 +1,6 @@
 package br.com.meucaixa.api.controllers.roles;
 
+import br.com.meucaixa.api.annotations.WithSpan;
 import br.com.meucaixa.api.exceptions.ValidationException;
 import br.com.meucaixa.api.models.Role;
 import br.com.meucaixa.api.services.RoleService;
@@ -19,13 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/roles")
 public class RoleController {
 
-    private RoleService roleService;
+    private final RoleService roleService;
 
     public RoleController(RoleService roleService) {
         this.roleService = roleService;
     }
 
     @GetMapping
+    @WithSpan("Controller.listRolesPageable")
     public HttpEntity<PagedModel<RoleResponse>> listRolesPageable(Pageable pageable, PagedResourcesAssembler assembler) {
         Page<Role> roles = roleService.listRolesPageable(pageable);
         PagedModel<RoleResponse> model = assembler.toModel(
