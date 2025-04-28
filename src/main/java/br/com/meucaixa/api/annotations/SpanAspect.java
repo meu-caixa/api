@@ -23,9 +23,9 @@ public class SpanAspect {
         try {
             span.addEvent("Method execution started");
             return joinPoint.proceed();
-        } catch (Throwable throwable) {
-            span.recordException(throwable);
-            throw throwable;
+        } catch (Exception exception) {
+            span.recordException(exception);
+            throw exception;
         } finally {
             span.end();
         }
